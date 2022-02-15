@@ -14,6 +14,10 @@ var coursesRouter = require('./routes/courses')
 var subjectsRouter = require('./routes/subjects')
 var studentsRouter = require('./routes/students')
 var unitsRouter = require('./routes/units')
+var adminRouter = require('./routes/admin')
+var createsetRouter = require('./routes/createset')
+var facultyloginRouter = require('./routes/facultylogin')
+var questionRouter = require('./routes/question')
 
 var app = express();
 
@@ -38,7 +42,10 @@ app.use('/courses',coursesRouter);
 app.use('/subjects',subjectsRouter);
 app.use('/students',studentsRouter);
 app.use('/units',unitsRouter);
-
+app.use('/createset',createsetRouter);
+app.use('/admin',adminRouter);
+app.use('/facultylogin',facultyloginRouter);
+app.use('/question',questionRouter);
 
 
 

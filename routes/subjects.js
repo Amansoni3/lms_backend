@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var pool = require('./pool')
-var upload = require('./multer') 
+var upload = require('./multer'); 
+const { query } = require('express');
 
 // subjectid, courseid, departmentid, semester, subjectname, type, subjectsmarks, practicalmarks
 
@@ -34,6 +35,24 @@ router.post('/displayallcoursesbyid',function(req,res){
        }
    })
 })
+
+router.post('/displaysubjectsbysemester',function(req,res){
+    
+   pool.query("select * from subjects where courseid = ? and semester = ?",[req.body.courses,req.body.semester],function(error,result){
+   console.log('zzzzzz',req.body)
+
+       if(error)
+       {  console.log('xxxx',error)
+          res.status(500).json({result:[]})
+       }
+       else
+       {  console.log('result',result)
+
+          res.status(200).json({result:result})
+       }
+   })
+})
+
 
 router.post('/addsubjects',function(req,res){
 
